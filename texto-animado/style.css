@@ -1,0 +1,98 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    font-size: 62.5%;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: burlywood;
+}
+
+h2 {
+    position: relative;
+    font-size: 14vw;
+    color: burlywood;
+    -webkit-text-stroke:0.3vw rgb(243, 116, 116); /*especifica la  anchura y  color del trazo para los caractéres de texto*/
+    text-transform: uppercase;
+}
+
+
+h2::before {
+    /*content: attr(data-text); /* contenido al cual se le va aplicar el before*/
+    content: "I\00a0LOVE!"; /* como el content se rompe si se utiliza " " (espacio)  debe especificarse mediante unicode de escape  El \00a0 no permite que se rompa el contenido*/
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0%;
+    height: 100%;
+    color: red;
+    -webkit-text-stroke:0vw rgb(222, 163, 135);
+    border-right: 2px solid red;
+    overflow: hidden; /*La overflowpropiedad especifica si recortar el contenido o agregar barras de desplazamiento cuando el contenido de un elemento es demasiado grande para caber en el área especificada
+    
+    hidden - El desbordamiento se recorta y el resto del contenido será invisible*/
+
+    animation: animate 6s linear infinite; /* Permite crear animaciones nombre de la animación - tiempo - velocidad*/ 
+
+}
+
+
+@keyframes animate { /*@keyframes permite a los autores controlar los pasos intermedios en una secuencia de animación CSS mediante el establecimiento de keyframes (o puntos de trayectoria) a lo largo de la secuencia de animación que debe ser alcanzado por determinados puntos durante la animación*/
+
+    0%,10%,100% {
+        width: 0;
+    }
+
+    70%,90% {
+        width: 100%;
+    }
+
+}
+
+
+
+/* INFORMACION QUE ME AYUDO A ENTENDER ESTE PROBLEMA
+
+
+-webkit-text-stroke
+https://developer.mozilla.org/es/docs/Web/CSS/-webkit-text-stroke
+
+
+data-
+https://www.w3schools.com/tags/att_data-.asp
+
+
+::before
+https://www.w3schools.com/cssref/sel_before.asp
+
+attr()
+https://developer.mozilla.org/es/docs/Web/CSS/attr()
+
+
+overflow
+https://www.w3schools.com/css/css_overflow.asp
+
+
+@keyframes
+https://developer.mozilla.org/es/docs/Web/CSS/@keyframes
+
+
+
+
+POSIBLES ERRORES
+
+cuando el texto de animación tiene espacios
+https://stackoverflow.com/questions/5467605/add-a-space-after-an-element-using-after
+
+*/
+
+
+ 
